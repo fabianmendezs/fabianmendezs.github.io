@@ -25,7 +25,7 @@ html { scroll-behavior: smooth; }
 }
 body { background: var(--bg); color: var(--ink); font-family: var(--font-sans); font-size: 15px; line-height: 1.75; }
 .page { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
- 
+
 /* ── Header ── */
 header {
   border-bottom: 1px solid var(--rule);
@@ -46,7 +46,7 @@ nav a {
   border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s;
 }
 nav a:hover, nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
- 
+
 /* ── Intro ── */
 .intro { padding: 4rem 0 3rem; border-bottom: 1px solid var(--rule); }
 .intro-grid { display: grid; grid-template-columns: 1fr 100px; gap: 2.5rem; align-items: start; }
@@ -66,19 +66,19 @@ nav a:hover, nav a.active { color: var(--accent); border-bottom-color: var(--acc
   display: flex; align-items: center; justify-content: center;
   font-family: var(--font-serif); font-size: 2rem; font-style: italic; color: var(--accent); flex-shrink: 0;
 }
- 
+
 /* ── Sections ── */
 section { padding: 3rem 0; border-bottom: 1px solid var(--rule); }
 section:last-of-type { border-bottom: none; }
 .section-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem; }
 .section-title { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; }
 .section-count { font-family: var(--font-mono); font-size: 11px; color: var(--ink3); }
- 
+
 /* ── About ── */
 .about-text p { color: var(--ink2); font-size: 14.5px; line-height: 1.85; margin-bottom: 0.85rem; }
 .about-text p:last-child { margin-bottom: 0; }
 .about-text p strong { color: var(--ink); font-weight: 500; }
- 
+
 /* ── Projects ── */
 .projects-list { display: flex; flex-direction: column; gap: 1.25rem; }
 .project-item {
@@ -96,10 +96,10 @@ section:last-of-type { border-bottom: none; }
 .proj-year { font-family: var(--font-mono); font-size: 11px; color: var(--ink3); display: block; margin-bottom: 0.5rem; }
 .proj-link { font-family: var(--font-mono); font-size: 11px; color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
 .proj-link:hover { border-bottom-color: var(--accent); }
- 
+
 /* ── Footer ── */
 footer { border-top: 1px solid var(--rule); padding: 1.5rem 2rem; font-family: var(--font-mono); font-size: 11.5px; color: var(--ink3); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; max-width: var(--max); margin: 0 auto; }
- 
+
 /* ── Responsive ── */
 @media (max-width: 600px) {
   .intro-grid { grid-template-columns: 1fr; }
@@ -111,20 +111,19 @@ footer { border-top: 1px solid var(--rule); padding: 1.5rem 2rem; font-family: v
 </style>
 </head>
 <body>
- 
+
 <header>
   <div class="header-inner">
     <a href="#" class="site-id">fabianmendezs.github.io</a>
     <nav>
-      <a href="#about">Sobre mí</a>
       <a href="#projects">Proyectos</a>
       <a href="https://fabianmendezs.github.io/CV_FabianM/" target="_blank">CV ↗</a>
     </nav>
   </div>
 </header>
- 
+
 <main class="page">
- 
+
   <!-- INTRO -->
   <div class="intro">
     <div class="intro-grid">
@@ -144,27 +143,15 @@ footer { border-top: 1px solid var(--rule); padding: 1.5rem 2rem; font-family: v
       <div class="avatar-box">FM</div>
     </div>
   </div>
- 
-  <!-- SOBRE MÍ -->
-  <section id="about">
-    <div class="section-header">
-      <span class="section-title">Sobre mí</span>
-    </div>
-    <div class="about-text">
-      <p>Soy analista de datos basado en <strong>Santiago, Chile</strong>, con más de 13 años construyendo soluciones de inteligencia de negocio en industrias tan distintas como la automotriz, química, energía eléctrica y formación corporativa.</p>
-      <p>Mi trabajo vive en la intersección entre los datos operacionales —SAP, transacciones, ETL— y la toma de decisiones gerencial. Me interesa que un dashboard no solo se vea bien, sino que cambie cómo una organización entiende su propio negocio.</p>
-      <p>Actualmente curso el <strong>Magíster en Estadística en la PUCV</strong>, profundizando en modelado estadístico y fundamentos matemáticos que informan directamente cómo analizo datos en el trabajo. Mi stack principal incluye Power BI, Snowflake, SAP S/4HANA, SQL y Python.</p>
-    </div>
-  </section>
- 
+
   <!-- PROYECTOS -->
   <section id="projects">
     <div class="section-header">
       <span class="section-title">Proyectos</span>
-      <span class="section-count">3 proyectos</span>
+      <span class="section-count">1 proyecto</span>
     </div>
     <div class="projects-list">
- 
+
       <div class="project-item">
         <div>
           <div class="proj-name">Análisis de Exoplanetas — NASA Exoplanet Archive</div>
@@ -179,56 +166,20 @@ footer { border-top: 1px solid var(--rule); padding: 1.5rem 2rem; font-family: v
         </div>
         <div class="proj-meta">
           <span class="proj-year">2024</span>
-          <a href="#" class="proj-link">Ver proyecto →</a>
+          <a href="https://exoplanet-intelligence.streamlit.app/" target="_blank" class="proj-link">Ver proyecto →</a>
         </div>
       </div>
- 
-      <div class="project-item">
-        <div>
-          <div class="proj-name">Modelo de Margen Comercial — Dartel Electricidad</div>
-          <p class="proj-desc">Modelo de datos en Power BI que consolida procesos de Compras y Ventas desde SAP S/4HANA y Snowflake. Incluye modelo de comisiones por vendedor y automatización de reportes diarios a gerencias vía correo.</p>
-          <div class="proj-tags">
-            <span class="proj-tag hl">Power BI</span>
-            <span class="proj-tag hl">Snowflake</span>
-            <span class="proj-tag">DAX</span>
-            <span class="proj-tag">SAP S/4HANA</span>
-            <span class="proj-tag">Power Query</span>
-          </div>
-        </div>
-        <div class="proj-meta">
-          <span class="proj-year">2025</span>
-          <a href="#" class="proj-link">Ver proyecto →</a>
-        </div>
-      </div>
- 
-      <div class="project-item">
-        <div>
-          <div class="proj-name">Análisis Mercado Automotriz — Inchcape Américas</div>
-          <p class="proj-desc">Reporte analítico del mercado automotriz chileno con datos ANAC y RVM. Segmentación por regiones, marcas y competidores. Reporte financiero paralelo con seguimiento de EEFF y Presupuestos para Control de Gestión.</p>
-          <div class="proj-tags">
-            <span class="proj-tag hl">Power BI</span>
-            <span class="proj-tag">Power Query</span>
-            <span class="proj-tag">ANAC</span>
-            <span class="proj-tag">RVM</span>
-            <span class="proj-tag">Consultoría</span>
-          </div>
-        </div>
-        <div class="proj-meta">
-          <span class="proj-year">2024</span>
-          <a href="#" class="proj-link">Ver proyecto →</a>
-        </div>
-      </div>
- 
+
     </div>
   </section>
- 
+
 </main>
- 
+
 <footer>
   <span>Fabián Méndez Sanzana · Santiago, Chile</span>
   <span>Actualizado abril 2026</span>
 </footer>
- 
+
 <script>
   const navLinks = document.querySelectorAll('nav a[href^="#"]');
   const sections = document.querySelectorAll('section[id]');
