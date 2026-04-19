@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fabián Méndez — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Code+Pro:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+:root {
+  --bg: #faf9f7;
+  --bg2: #f3f1ec;
+  --ink: #1a1a18;
+  --ink2: #4a4a44;
+  --ink3: #888880;
+  --accent: #1a6b4a;
+  --accent2: #2d9966;
+  --rule: #dddbd4;
+  --font-serif: 'Lora', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Source Code Pro', monospace;
+  --max: 820px;
+}
+body { background: var(--bg); color: var(--ink); font-family: var(--font-sans); font-size: 15px; line-height: 1.75; }
+.page { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+header {
+  border-bottom: 1px solid var(--rule);
+  position: sticky; top: 0;
+  background: rgba(250,249,247,0.96);
+  backdrop-filter: blur(8px);
+  z-index: 50;
+}
+.header-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between; height: 52px;
+}
+.site-id { font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--accent); text-decoration: none; }
+nav { display: flex; }
+nav a {
+  font-size: 13px; color: var(--ink2); text-decoration: none;
+  padding: 0 0.85rem; height: 52px; display: flex; align-items: center;
+  border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s;
+}
+nav a:hover, nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+.intro { padding: 4rem 0 3rem; border-bottom: 1px solid var(--rule); }
+.intro-grid { display: grid; grid-template-columns: 1fr 100px; gap: 2.5rem; align-items: start; }
+.intro-name { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 600; line-height: 1.15; margin-bottom: 0.35rem; }
+.intro-title { font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 1.25rem; }
+.intro-bio { color: var(--ink2); font-size: 15px; line-height: 1.8; max-width: 600px; margin-bottom: 1.5rem; }
+.intro-bio strong { color: var(--ink); font-weight: 500; }
+.intro-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.intro-links a {
+  font-family: var(--font-mono); font-size: 11.5px; color: var(--ink2); text-decoration: none;
+  padding: 4px 10px; border: 1px solid var(--rule); border-radius: 3px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.intro-links a:hover { color: var(--accent); border-color: var(--accent); }
+.avatar-box {
+  width: 90px; height: 90px; border-radius: 6px; background: var(--bg2); border: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-serif); font-size: 2rem; font-style: italic; color: var(--accent); flex-shrink: 0;
+}
+section { padding: 3rem 0; border-bottom: 1px solid var(--rule); }
+section:last-of-type { border-bottom: none; }
+.section-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem; }
+.section-title { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; }
+.section-count { font-family: var(--font-mono); font-size: 11px; color: var(--ink3); }
+.projects-list { display: flex; flex-direction: column; gap: 1.25rem; }
+.project-item {
+  display: grid; grid-template-columns: 3fr 1fr; gap: 1rem 2rem;
+  padding: 1.25rem 1.5rem; border: 1px solid var(--rule); border-radius: 5px;
+  transition: border-color 0.2s, background 0.2s; align-items: start;
+}
+.project-item:hover { border-color: var(--accent2); background: #f7fdf9; }
+.proj-name { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
+.proj-desc { font-size: 13.5px; color: var(--ink2); line-height: 1.65; margin-bottom: 0.75rem; }
+.proj-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.proj-tag { font-family: var(--font-mono); font-size: 10.5px; padding: 2px 7px; border-radius: 2px; background: var(--bg2); color: var(--ink3); border: 1px solid var(--rule); }
+.proj-tag.hl { background: #e8f5ee; color: var(--accent); border-color: #b8ddc9; }
+.proj-meta { text-align: right; }
+.proj-year { font-family: var(--font-mono); font-size: 11px; color: var(--ink3); display: block; margin-bottom: 0.5rem; }
+.proj-link { font-family: var(--font-mono); font-size: 11px; color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+.proj-link:hover { border-bottom-color: var(--accent); }
+.stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem 2rem; }
+.stack-group-label { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink3); margin-bottom: 0.6rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--rule); }
+.stack-group ul { list-style: none; }
+.stack-group li { font-size: 13.5px; color: var(--ink2); padding: 2px 0; display: flex; align-items: center; gap: 6px; }
+.stack-group li::before { content: ''; display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--accent2); flex-shrink: 0; }
+.exp-list { display: flex; flex-direction: column; }
+.exp-row { display: grid; grid-template-columns: 140px 1fr; gap: 1rem 2rem; padding: 1.25rem 0; border-bottom: 1px solid var(--rule); }
+.exp-row:last-child { border-bottom: none; }
+.exp-date { font-family: var(--font-mono); font-size: 11px; color: var(--ink3); padding-top: 3px; }
+.exp-company { font-family: var(--font-mono); font-size: 12px; color: var(--accent); font-weight: 500; margin-bottom: 2px; }
+.exp-role { font-weight: 600; font-size: 14.5px; margin-bottom: 0.5rem; }
+.exp-desc { font-size: 13.5px; color: var(--ink2); line-height: 1.65; }
+.exp-desc li { margin-left: 1.1rem; margin-bottom: 2px; }
+.bio-block { display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; align-items: start; }
+.bio-text p { color: var(--ink2); margin-bottom: 0.85rem; font-size: 14.5px; line-height: 1.8; }
+.bio-text p strong { color: var(--ink); font-weight: 500; }
+.fact-row { padding: 0.6rem 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 80px 1fr; gap: 0.5rem; font-size: 13px; }
+.fact-label { color: var(--ink3); font-family: var(--font-mono); font-size: 11px; padding-top: 2px; }
+.fact-val { color: var(--ink2); }
+.fact-val a { color: var(--accent); text-decoration: none; }
+.fact-val a:hover { text-decoration: underline; }
+footer { border-top: 1px solid var(--rule); padding: 1.5rem 2rem; font-family: var(--font-mono); font-size: 11.5px; color: var(--ink3); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; max-width: var(--max); margin: 0 auto; }
+@media (max-width: 600px) {
+  .intro-grid, .bio-block { grid-template-columns: 1fr; }
+  .avatar-box { display: none; }
+  .project-item { grid-template-columns: 1fr; }
+  .proj-meta { text-align: left; }
+  .exp-row { grid-template-columns: 1fr; gap: 0.25rem; }
+  nav a { padding: 0 0.5rem; font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="site-id">fabianmendezs.github.io</a>
+    <nav>
+      <a href="#projects">Proyectos</a>
+      <a href="#stack">Stack</a>
+      <a href="#experience">Experiencia</a>
+      <a href="#about">Sobre mí</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+
+  <div class="intro">
+    <div class="intro-grid">
+      <div>
+        <div class="intro-title">Data Analyst · Santiago, Chile</div>
+        <div class="intro-name">Fabián Méndez<br>Sanzana</div>
+        <p class="intro-bio">
+          Analista de datos con más de <strong>13 años de experiencia</strong> transformando datos complejos en decisiones estratégicas. Especialista en visualización, modelado y automatización de reportería. Actualmente cursando el <strong>Magíster en Estadística</strong> en la PUCV.
+        </p>
+        <div class="intro-links">
+          <a href="https://www.linkedin.com/in/fmendezsanzana" target="_blank">LinkedIn ↗</a>
+          <a href="https://www.novypro.com/profile_projects/fabianmendez" target="_blank">Portfolio Power BI ↗</a>
+          <a href="https://fabianmendezs.github.io/CV_FabianM/" target="_blank">CV ↗</a>
+          <a href="mailto:fabianrodrigo.mendez@gmail.com">Email ↗</a>
+        </div>
+      </div>
+      <div class="avatar-box">FM</div>
+    </div>
+  </div>
+
+  <section id="projects">
+    <div class="section-header">
+      <span class="section-title">Proyectos</span>
+      <span class="section-count">3 proyectos</span>
+    </div>
+    <div class="projects-list">
+
+      <div class="project-item">
+        <div>
+          <div class="proj-name">Análisis de Exoplanetas — NASA Exoplanet Archive</div>
+          <p class="proj-desc">Exploración estadística del catálogo NASA de exoplanetas confirmados. Análisis de métodos de detección, distribuciones de masa y radio planetario, y patrones en la zona de habitabilidad. Incluye visualizaciones interactivas y modelado exploratorio.</p>
+          <div class="proj-tags">
+            <span class="proj-tag hl">Python</span>
+            <span class="proj-tag hl">Data Science</span>
+            <span class="proj-tag">Pandas</span>
+            <span class="proj-tag">Matplotlib</span>
+            <span class="proj-tag">NASA API</span>
+          </div>
+        </div>
+        <div class="proj-meta">
+          <span class="proj-year">2024</span>
+          <a href="#" class="proj-link">Ver proyecto →</a>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div>
+          <div class="proj-name">Modelo de Margen Comercial — Dartel Electricidad</div>
+          <p class="proj-desc">Modelo de datos en Power BI que consolida procesos de Compras y Ventas desde SAP S/4HANA y Snowflake. Incluye modelo de comisiones por vendedor y automatización de reportes diarios a gerencias vía correo.</p>
+          <div class="proj-tags">
+            <span class="proj-tag hl">Power BI</span>
+            <span class="proj-tag hl">Snowflake</span>
+            <span class="proj-tag">DAX</span>
+            <span class="proj-tag">SAP S/4HANA</span>
+            <span class="proj-tag">Power Query</span>
+          </div>
+        </div>
+        <div class="proj-meta">
+          <span class="proj-year">2025</span>
+          <a href="#" class="proj-link">Ver proyecto →</a>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div>
+          <div class="proj-name">Análisis Mercado Automotriz — Inchcape Américas</div>
+          <p class="proj-desc">Reporte analítico con datos ANAC y RVM. Segmentación por regiones, marcas y competidores. Reporte financiero paralelo con seguimiento de EEFF y Presupuestos para Control de Gestión.</p>
+          <div class="proj-tags">
+            <span class="proj-tag hl">Power BI</span>
+            <span class="proj-tag">Power Query</span>
+            <span class="proj-tag">ANAC</span>
+            <span class="proj-tag">RVM</span>
+            <span class="proj-tag">Consultoría</span>
+          </div>
+        </div>
+        <div class="proj-meta">
+          <span class="proj-year">2024</span>
+          <a href="#" class="proj-link">Ver proyecto →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="section-header">
+      <span class="section-title">Stack técnico</span>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-group">
+        <div class="stack-group-label">BI & Visualización</div>
+        <ul>
+          <li>Power BI Desktop & Service</li>
+          <li>DAX</li>
+          <li>Power Query</li>
+          <li>KPI Design</li>
+        </ul>
+      </div>
+      <div class="stack-group">
+        <div class="stack-group-label">Datos & Cloud</div>
+        <ul>
+          <li>Snowflake</li>
+          <li>SQL / SQL Server</li>
+          <li>SAP S/4HANA</li>
+          <li>Microsoft Azure</li>
+          <li>EasyMorph (ETL)</li>
+        </ul>
+      </div>
+      <div class="stack-group">
+        <div class="stack-group-label">Data Science</div>
+        <ul>
+          <li>Python</li>
+          <li>Análisis Estadístico</li>
+          <li>Modelado de Datos</li>
+        </ul>
+      </div>
+      <div class="stack-group">
+        <div class="stack-group-label">Productividad</div>
+        <ul>
+          <li>Microsoft 365</li>
+          <li>Power Apps</li>
+          <li>SharePoint</li>
+          <li>Excel Avanzado</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-header">
+      <span class="section-title">Experiencia profesional</span>
+      <span class="section-count">13+ años</span>
+    </div>
+    <div class="exp-list">
+      <div class="exp-row">
+        <div class="exp-date">Abr 2025 — Presente</div>
+        <div>
+          <div class="exp-company">Dartel Electricidad</div>
+          <div class="exp-role">Analista Control de Gestión</div>
+          <ul class="exp-desc">
+            <li>Power BI para el Área Comercial usando SAP S/4HANA y Snowflake.</li>
+            <li>Modelos de datos para análisis de Margen de Negocio (Compras + Ventas).</li>
+            <li>Automatización de reportes diarios a Gerencias y Proveedores.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-row">
+        <div class="exp-date">Jul 2024 — Abr 2025</div>
+        <div>
+          <div class="exp-company">CAREN — Repuestos Flotacentro</div>
+          <div class="exp-role">Analista Control de Gestión</div>
+          <ul class="exp-desc">
+            <li>Power BI Service con RLS · SQL Server · Snowflake como DWH · EasyMorph para ETL.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-row">
+        <div class="exp-date">Mar – May 2024</div>
+        <div>
+          <div class="exp-company">Inchcape Américas</div>
+          <div class="exp-role">Consultoría Power BI</div>
+          <ul class="exp-desc">
+            <li>Análisis del mercado automotriz (ANAC/RVM) y reporte financiero para Control de Gestión.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-row">
+        <div class="exp-date">Dic 2022 — Oct 2023</div>
+        <div>
+          <div class="exp-company">BASF</div>
+          <div class="exp-role">Analista Administrativo</div>
+          <ul class="exp-desc">
+            <li>KPIs de flota corporativa Chile/Perú · herramienta ISO 39001 · licitación leasing operativo.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-row">
+        <div class="exp-date">2012 – 2022</div>
+        <div>
+          <div class="exp-company">OTIC SOFOFA · BASF · Kaufmann · Anglo American</div>
+          <div class="exp-role">Coordinador & Asistente</div>
+          <ul class="exp-desc">
+            <li>10 años en gestión de datos, SAP ERP, dashboards de capacitación en Chile, Perú y Colombia.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-header">
+      <span class="section-title">Sobre mí</span>
+    </div>
+    <div class="bio-block">
+      <div class="bio-text">
+        <p>Soy analista de datos basado en <strong>Santiago, Chile</strong>. Durante más de 13 años he construido soluciones de inteligencia de negocio en industrias tan distintas como la automotriz, química, energía eléctrica y formación corporativa.</p>
+        <p>Mi trabajo vive en la intersección entre datos operacionales —SAP, transacciones, ETL— y la toma de decisiones gerencial. Me interesa que un dashboard no solo se vea bien, sino que cambie cómo una empresa lee su propio negocio.</p>
+        <p>Actualmente curso el <strong>Magíster en Estadística en la PUCV</strong>, profundizando en modelado estadístico y fundamentos matemáticos que informan cómo analizo datos en el trabajo.</p>
+      </div>
+      <div>
+        <div class="fact-row">
+          <span class="fact-label">Ubicación</span>
+          <span class="fact-val">Santiago, Chile</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-label">Email</span>
+          <span class="fact-val"><a href="mailto:fabianrodrigo.mendez@gmail.com">fabianrodrigo.mendez@gmail.com</a></span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-label">LinkedIn</span>
+          <span class="fact-val"><a href="https://www.linkedin.com/in/fmendezsanzana" target="_blank">fmendezsanzana</a></span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-label">Portfolio</span>
+          <span class="fact-val"><a href="https://www.novypro.com/profile_projects/fabianmendez" target="_blank">NovyPro</a></span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-label">Estado</span>
+          <span class="fact-val">Disponible para proyectos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>Fabián Méndez Sanzana · Santiago, Chile</span>
+  <span>Actualizado abril 2026</span>
+</footer>
+
+<script>
+  const navLinks = document.querySelectorAll('nav a');
+  const sections = document.querySelectorAll('section[id]');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    });
+  }, { threshold: 0.35 });
+  sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
