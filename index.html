@@ -10,14 +10,14 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 :root {
-  --bg: #faf9f7;
-  --bg2: #f3f1ec;
-  --ink: #1a1a18;
-  --ink2: #4a4a44;
-  --ink3: #888880;
-  --accent: #1a6b4a;
-  --accent2: #2d9966;
-  --rule: #dddbd4;
+  --bg: #ffffff;
+  --bg2: #f0f4fa;
+  --ink: #0d1b2e;
+  --ink2: #3a4f6a;
+  --ink3: #8099b8;
+  --accent: #1a56db;
+  --accent2: #2d6ef0;
+  --rule: #ccd8ea;
   --font-serif: 'Lora', Georgia, serif;
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'Source Code Pro', monospace;
@@ -30,7 +30,7 @@ body { background: var(--bg); color: var(--ink); font-family: var(--font-sans); 
 header {
   border-bottom: 1px solid var(--rule);
   position: sticky; top: 0;
-  background: rgba(250,249,247,0.96);
+  background: rgba(255,255,255,0.96);
   backdrop-filter: blur(8px);
   z-index: 50;
 }
@@ -86,12 +86,12 @@ section:last-of-type { border-bottom: none; }
   padding: 1.25rem 1.5rem; border: 1px solid var(--rule); border-radius: 5px;
   transition: border-color 0.2s, background 0.2s; align-items: start;
 }
-.project-item:hover { border-color: var(--accent2); background: #f7fdf9; }
+.project-item:hover { border-color: var(--accent2); background: #f0f4fa; }
 .proj-name { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
 .proj-desc { font-size: 13.5px; color: var(--ink2); line-height: 1.65; margin-bottom: 0.75rem; }
 .proj-tags { display: flex; flex-wrap: wrap; gap: 5px; }
 .proj-tag { font-family: var(--font-mono); font-size: 10.5px; padding: 2px 7px; border-radius: 2px; background: var(--bg2); color: var(--ink3); border: 1px solid var(--rule); }
-.proj-tag.hl { background: #e8f5ee; color: var(--accent); border-color: #b8ddc9; }
+.proj-tag.hl { background: #dbeafe; color: var(--accent); border-color: #93c5fd; }
 .proj-meta { text-align: right; }
 .proj-year { font-family: var(--font-mono); font-size: 11px; color: var(--ink3); display: block; margin-bottom: 0.5rem; }
 .proj-link { font-family: var(--font-mono); font-size: 11px; color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
@@ -148,7 +148,7 @@ footer { border-top: 1px solid var(--rule); padding: 1.5rem 2rem; font-family: v
   <section id="projects">
     <div class="section-header">
       <span class="section-title">Proyectos</span>
-      <span class="section-count">1 proyecto</span>
+      <span class="section-count">2 proyectos</span>
     </div>
     <div class="projects-list">
 
@@ -167,6 +167,24 @@ footer { border-top: 1px solid var(--rule); padding: 1.5rem 2rem; font-family: v
         <div class="proj-meta">
           <span class="proj-year">2024</span>
           <a href="https://exoplanet-intelligence.streamlit.app/" target="_blank" class="proj-link">Ver proyecto →</a>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div>
+          <div class="proj-name">Venta de Paltas en EE.UU. — Dashboard Power BI</div>
+          <p class="proj-desc">Dashboard de ventas de paltas en el mercado estadounidense a partir de datos públicos de Kaggle. El proceso incluyó carga y transformación en SQL Server, exportación a CSV, y modelado final en Power BI con Power Query y medidas DAX. Analiza volumen de ventas, precios promedio, variación por región y comportamiento temporal del mercado.</p>
+          <div class="proj-tags">
+            <span class="proj-tag hl">Power BI</span>
+            <span class="proj-tag hl">SQL Server</span>
+            <span class="proj-tag">DAX</span>
+            <span class="proj-tag">Power Query</span>
+            <span class="proj-tag">Kaggle</span>
+          </div>
+        </div>
+        <div class="proj-meta">
+          <span class="proj-year">2024</span>
+          <a href="https://app.powerbi.com/view?r=eyJrIjoiYTE0MGRkNzMtN2I1OC00NzdmLWE4N2YtYWVjODkxNmQyODdhIiwidCI6IjdlZjI1YTJmLThlYzAtNDcyMy1iYzAxLTllNGM5OWNlOWExMSIsImMiOjR9" target="_blank" class="proj-link">Ver proyecto →</a>
         </div>
       </div>
 
